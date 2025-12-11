@@ -21,7 +21,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
 
     try {
       // Read file buffer
-      await data.toBuffer(); // Validate can read file
+      const buffer = await data.toBuffer();
       const filename = data.filename;
       const fileExtension = filename.split('.').pop() || '';
 
@@ -64,11 +64,14 @@ export async function uploadRoutes(fastify: FastifyInstance) {
     }
 
     try {
-      await data.toBuffer(); // Validate can read file
+      // Read and validate file can be processed
+      // TODO: Extract actual image dimensions from buffer using image library (sharp, jimp, etc.)
+      await data.toBuffer();
+      
       const filename = data.filename;
       const fileExtension = filename.split('.').pop() || '';
 
-      // In production, analyze image dimensions from buffer
+      // Using mock dimensions as placeholder - in production, extract from buffer
       const mockWidth = 3000;
       const mockHeight = 3000;
 
@@ -125,7 +128,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
   });
 
   /**
-   * GET /api/upload/validate
+   * POST /api/upload/validate
    * Validate metadata against platform requirements
    */
   fastify.post<{

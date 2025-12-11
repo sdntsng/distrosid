@@ -21,7 +21,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
 
     try {
       // Read file buffer
-      const buffer = await data.toBuffer();
+      await data.toBuffer(); // Validate can read file
       const filename = data.filename;
       const fileExtension = filename.split('.').pop() || '';
 
@@ -64,11 +64,11 @@ export async function uploadRoutes(fastify: FastifyInstance) {
     }
 
     try {
-      const buffer = await data.toBuffer();
+      await data.toBuffer(); // Validate can read file
       const filename = data.filename;
       const fileExtension = filename.split('.').pop() || '';
 
-      // In production, analyze image dimensions
+      // In production, analyze image dimensions from buffer
       const mockWidth = 3000;
       const mockHeight = 3000;
 
@@ -141,6 +141,7 @@ export async function uploadRoutes(fastify: FastifyInstance) {
       const parsedPlatforms = platforms.map(p => PlatformSchema.parse(p));
       
       // Validate metadata
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const validation = dspValidator.validateMetadata(
         metadata as any,
         parsedPlatforms

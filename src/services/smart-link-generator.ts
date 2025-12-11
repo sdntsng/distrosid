@@ -60,7 +60,7 @@ export class SmartLinkGenerator {
   /**
    * Get smart link analytics (would integrate with analytics service)
    */
-  async getAnalytics(smartLinkId: string): Promise<{
+  async getAnalytics(_smartLinkId: string): Promise<{
     totalClicks: number;
     clicksByPlatform: Record<Platform, number>;
     clicksByCountry: Record<string, number>;

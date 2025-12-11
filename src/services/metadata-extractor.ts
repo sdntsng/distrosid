@@ -43,7 +43,7 @@ export class MetadataExtractor {
   /**
    * Extract metadata from external link (YouTube, SoundCloud, etc.)
    */
-  async extractFromLink(url: string): Promise<Metadata> {
+  async extractFromLink(_url: string): Promise<Metadata> {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 100));
 
@@ -70,7 +70,7 @@ export class MetadataExtractor {
    */
   async refineMetadata(
     currentMetadata: Metadata,
-    userContext?: string
+    _userContext?: string
   ): Promise<Metadata> {
     // In production, this would use GPT-4 or similar to:
     // 1. Analyze user context
@@ -91,7 +91,7 @@ export class MetadataExtractor {
     return `${adj} ${noun}`;
   }
 
-  private detectGenre(audioBuffer: Buffer): string {
+  private detectGenre(_audioBuffer: Buffer): string {
     // Simulate genre detection
     // In production, use ML models trained on audio features
     const genres = [
@@ -101,7 +101,7 @@ export class MetadataExtractor {
     return genres[Math.floor(Math.random() * genres.length)];
   }
 
-  private detectMood(audioBuffer: Buffer): string {
+  private detectMood(_audioBuffer: Buffer): string {
     // Simulate mood detection
     // In production, analyze tempo, key, energy, valence
     const moods = [
@@ -111,7 +111,7 @@ export class MetadataExtractor {
     return moods[Math.floor(Math.random() * moods.length)];
   }
 
-  private estimateDuration(audioBuffer: Buffer): number {
+  private estimateDuration(_audioBuffer: Buffer): number {
     // Simulate duration estimation (in seconds)
     // In production, parse audio file headers
     return Math.floor(Math.random() * 180) + 120; // 2-5 minutes

@@ -11,7 +11,7 @@ export class SocialContentGenerator {
   async generateContent(
     metadata: Metadata,
     audioUrl: string,
-    coverArtUrl?: string
+    _coverArtUrl?: string
   ): Promise<SocialMediaContent[]> {
     // In production, this would:
     // 1. Analyze audio to find the "hook" (most engaging 15-30s)
@@ -127,7 +127,7 @@ export class SocialContentGenerator {
   /**
    * Analyze audio to find the hook (most engaging section)
    */
-  async findHook(audioBuffer: Buffer): Promise<{ start: number; end: number }> {
+  async findHook(_audioBuffer: Buffer): Promise<{ start: number; end: number }> {
     // In production, use ML models to:
     // 1. Detect energy peaks
     // 2. Identify chorus/drop sections

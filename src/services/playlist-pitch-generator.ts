@@ -37,7 +37,7 @@ export class PlaylistPitchGenerator {
   /**
    * Generate compelling pitch description
    */
-  private generateDescription(metadata: Metadata, platform: Platform): string {
+  private generateDescription(metadata: Metadata, _platform: Platform): string {
     // In production, use GPT-4 to create personalized, engaging pitches
     // Consider: track story, artist background, production details, comparisons
     
@@ -169,7 +169,7 @@ export class PlaylistPitchGenerator {
   /**
    * Track pitch submission status
    */
-  async trackSubmissionStatus(pitchId: string): Promise<{
+  async trackSubmissionStatus(_pitchId: string): Promise<{
     submitted: boolean;
     accepted: boolean;
     playlistsAdded: string[];
